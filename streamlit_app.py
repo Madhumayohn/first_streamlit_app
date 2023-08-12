@@ -41,6 +41,10 @@ import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +add_my_fruit)
 #streamlit.text(fruityvice_response.json())
 
+import snowflake.connector
+my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_cnx.cursor()
+my_cur.execute("insert into fruit_load_list values ('from streamlit')")
 
 
 
